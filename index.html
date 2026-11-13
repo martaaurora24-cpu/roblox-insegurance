@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox Insegurance</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #080e1a;
+  color: white;
+}
+
+header {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  background: #0d1728;
+  border-bottom: 1px solid #1d3452;
+}
+
+.logo {
+  color: #38a5ff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav a {
+  color: #b9cce4;
+  text-decoration: none;
+  margin-left: 25px;
+}
+
+nav a:hover {
+  color: #38a5ff;
+}
+
+.hero {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  background:
+    radial-gradient(ellipse at center,
+    #153967 0%, #080e1a 70%);
+}
+
+.tag {
+  color: #55b4ff;
+  border: 1px solid #2879bd;
+  border-radius: 30px;
+  padding: 9px 18px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 6vw, 65px);
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: #38a5ff;
+}
+
+.hero p {
+  color: #a6bad3;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 30px;
+  background: #1679e9;
+  color: white;
+  padding: 15px 28px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #3298ff;
+}
+
+section {
+  padding: 75px 8%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #93a9c3;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #101d30;
+  border: 1px solid #203b5e;
+  padding: 28px;
+  border-radius: 15px;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #278ff1;
+}
+
+.card .icon {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #51aaff;
+}
+
+.card p {
+  color: #a6bad3;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.warning {
+  background: #111d30;
+  border: 1px solid #d99b34;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 35px;
+}
+
+footer {
+  background: #0d1728;
+  border-top: 1px solid #203b5e;
+  text-align: center;
+  padding: 30px;
+  color: #849bb6;
+  font-size: 13px;
+}
+
+/* MENU DE PESQUISA */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.overlay.active {
+  display: flex;
+}
+
+.search-box {
+  background: #101d30;
+  border: 1px solid #287fc5;
+  border-radius: 18px;
+  padding: 30px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 0 45px #1679e944;
+}
+
+.search-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-top h2 {
+  color: #48aaff;
+}
+
+.close {
+  background: transparent;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-box p {
+  color: #a6bad3;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.search-box input {
+  width: 100%;
+  background: #081323;
+  border: 1px solid #315477;
+  padding: 15px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-box input:focus {
+  border-color: #38a5ff;
+}
+
+.search-box .button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.shortcut {
+  text-align: center;
+  color: #7893b3;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+@media(max-width:650px) {
+  header {
+    padding: 0 5%;
+  }
+
+  nav a {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  section {
+    padding: 55px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🛡 ROBLOX INSEGURANCE</div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#protecao">Proteção</a>
+    <a href="#dicas">Dicas</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="inicio">
+  <div class="tag">ROBLOX SECURITY CENTER</div>
+
+  <h1>
+    Proteja sua conta.<br>
+    <span>Proteja seu futuro.</span>
+  </h1>
+
+  <p>
+    Aprenda a proteger sua conta Roblox contra
+    hackers, golpes, phishing e roubo de contas.
+    Sua segurança começa aqui.
+  </p>
+
+  <a href="#protecao" class="button">
+    APRENDER A SE PROTEGER
+  </a>
+</div>
+
+<section id="protecao">
+  <h2 class="section-title">Proteção da sua conta</h2>
+
+  <p class="subtitle">
+    Conheça as principais maneiras de evitar invasões.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🔐</div>
+      <h3>Senha forte</h3>
+      <p>
+        Crie uma senha longa, exclusiva e difícil
+        de adivinhar. Nunca reutilize a senha
+        de outros sites.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Verificação em 2 etapas</h3>
+      <p>
+        Ative a autenticação em duas etapas
+        nas configurações do Roblox para
+        adicionar uma camada extra de proteção.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🍪</div>
+      <h3>Proteja seus cookies</h3>
+      <p>
+        Nunca compartilhe seus cookies ou
+        arquivos de sessão. Eles podem permitir
+        acesso à sua conta.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚠️</div>
+      <h3>Cuidado com links</h3>
+      <p>
+        Evite links suspeitos que prometem
+        Robux grátis, itens raros ou vantagens
+        em troca do seu login.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Downloads seguros</h3>
+      <p>
+        Não instale executáveis, extensões
+        ou programas desconhecidos que
+        prometem vantagens no Roblox.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📧</div>
+      <h3>E-mail protegido</h3>
+      <p>
+        Mantenha seu e-mail atualizado e
+        protegido com uma senha forte
+        e autenticação em duas etapas.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="warning">
+    <h3>⚠️ ATENÇÃO!</h3>
+    <p style="color:#b6c9df; margin-top:10px; line-height:1.6">
+      O Roblox nunca precisa da sua senha por
+      mensagens privadas. Nunca envie sua senha,
+      códigos de verificação ou cookies para
+      outras pessoas.
+    </p>
+  </div>
+</section>
+
+<section id="dicas">
+  <h2 class="section-title">Dicas de segurança</h2>
+  <p class="subtitle">
+    Faça estas verificações regularmente.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>01 — Confira suas sessões</h3>
+      <p>Verifique as sessões ativas nas configurações de segurança e encerre as que não reconhecer.</p>
+    </div>
+
+    <div class="card">
+      <h3>02 — Não compartilhe a conta</h3>
+      <p>Não entregue seus dados de acesso para amigos ou desconhecidos.</p>
+    </div>
+
+    <div class="card">
+      <h3>03 — Use o suporte oficial</h3>
+      <p>Se sua conta for comprometida, procure o suporte oficial do Roblox.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>ROBLOX INSEGURANCE © 2026</p>
+  <p style="margin-top:10px">
+    Projeto educativo independente. Não afiliado à Roblox Corporation.
+  </p>
+</footer>
+
+<!-- MENU SECRETO ALT + Y -->
+
+<div class="overlay" id="overlay">
+
+  <div class="search-box">
+
+    <div class="search-top">
+      <h2>🔎 Account Search</h2>
+
+      <button class="close" id="closeSearch"
+        aria-label="Fechar">×</button>
+    </div>
+
+    <p>
+      Pesquise perfis públicos do Roblox
+      pelo nome de usuário.
+    </p>
+
+    <form id="searchForm">
+      <input
+        type="text"
+        id="username"
+        placeholder="Digite o username..."
+        maxlength="50"
+        required
+        autocomplete="off"
+      >
+
+      <button class="button" type="submit">
+        PESQUISAR CONTA
+      </button>
+    </form>
+
+    <div class="shortcut">
+      ATALHO: ALT + Y &nbsp; | &nbsp; ESC PARA FECHAR
+    </div>
+
+  </div>
+</div>
+
+<script>
+const overlay = document.getElementById("overlay");
+const username = document.getElementById("username");
+const closeSearch = document.getElementById("closeSearch");
+
+function openSearch() {
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    username.focus();
+  }, 100);
+}
+
+function hideSearch() {
+  overlay.classList.remove("active");
+}
+
+// Atalho secreto ALT + Y
+document.addEventListener("keydown", function(event) {
+  if (
+    event.altKey &&
+    event.key.toLowerCase() === "y"
+  ) {
+    event.preventDefault();
+
+    if (overlay.classList.contains("active")) {
+      hideSearch();
+    } else {
+      openSearch();
+    }
+  }
+
+  if (event.key === "Escape") {
+    hideSearch();
+  }
+});
+
+closeSearch.addEventListener("click", hideSearch);
+
+// Fechar ao clicar fora do menu
+overlay.addEventListener("click", function(event) {
+  if (event.target === overlay) {
+    hideSearch();
+  }
+});
+
+// Pesquisa pública do Roblox
+document.getElementById("searchForm")
+.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = username.value.trim();
+
+  if (!name) return;
+
+  const url =
+    "https://www.roblox.com/search/users?keyword=" +
+    encodeURIComponent(name);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+</script>
+
+</body>
+</html>
